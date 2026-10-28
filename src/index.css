@@ -1,0 +1,136 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --color-midnight: #060913;
+  --color-midnight-2: #0a0f1e;
+  --color-panel: #10172a;
+  --color-panel-2: #151e36;
+  --color-panel-3: #1b2545;
+  --color-edge: #232f55;
+  --color-indigo-glow: #6366f1;
+  --color-emerald-glow: #10b981;
+  --color-amber-glow: #f59e0b;
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, monospace;
+}
+
+html, body {
+  background: #060913;
+  color: #e6eaf2;
+  font-family: "Inter", ui-sans-serif, system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+::selection {
+  background: rgba(99, 102, 241, 0.4);
+}
+
+*::-webkit-scrollbar { width: 8px; height: 8px; }
+*::-webkit-scrollbar-track { background: #0a0f1e; }
+*::-webkit-scrollbar-thumb { background: #26315c; border-radius: 8px; }
+*::-webkit-scrollbar-thumb:hover { background: #38468a; }
+
+.font-mono, code, pre { font-family: "JetBrains Mono", ui-monospace, monospace; }
+
+.bg-grid {
+  background-image:
+    linear-gradient(rgba(99,102,241,0.07) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(99,102,241,0.07) 1px, transparent 1px);
+  background-size: 32px 32px;
+}
+
+.bg-noise::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.5;
+  background-image: radial-gradient(rgba(255,255,255,0.04) 1px, transparent 1px);
+  background-size: 4px 4px;
+}
+
+.card {
+  background: linear-gradient(180deg, rgba(21,30,54,0.9), rgba(16,23,42,0.95));
+  border: 1px solid rgba(99,102,241,0.14);
+  border-radius: 14px;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.35), inset 0 1px 0 rgba(255,255,255,0.05);
+}
+
+.card-hover {
+  transition: border-color .25s ease, transform .25s ease, box-shadow .25s ease;
+}
+.card-hover:hover {
+  border-color: rgba(99,102,241,0.35);
+  box-shadow: 0 12px 40px rgba(99,102,241,0.12), 0 8px 32px rgba(0,0,0,0.35);
+}
+
+.glow-indigo { box-shadow: 0 0 24px rgba(99,102,241,0.45), 0 0 64px rgba(99,102,241,0.18); }
+.glow-emerald { box-shadow: 0 0 24px rgba(16,185,129,0.4), 0 0 64px rgba(16,185,129,0.15); }
+.glow-amber { box-shadow: 0 0 24px rgba(245,158,11,0.4), 0 0 64px rgba(245,158,11,0.15); }
+.glow-red { box-shadow: 0 0 24px rgba(244,63,94,0.4), 0 0 64px rgba(244,63,94,0.15); }
+
+.text-glow-indigo { text-shadow: 0 0 24px rgba(99,102,241,0.8); }
+.text-glow-emerald { text-shadow: 0 0 24px rgba(16,185,129,0.8); }
+
+@keyframes pulse-ring {
+  0% { transform: scale(1); opacity: 0.6; }
+  100% { transform: scale(1.8); opacity: 0; }
+}
+.animate-pulse-ring { animation: pulse-ring 1.8s cubic-bezier(0.2,0.6,0.4,1) infinite; }
+
+@keyframes float-y {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+.animate-float { animation: float-y 5s ease-in-out infinite; }
+
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+.animate-shimmer {
+  background: linear-gradient(110deg, transparent 30%, rgba(255,255,255,0.08) 50%, transparent 70%);
+  background-size: 200% 100%;
+  animation: shimmer 2.2s linear infinite;
+}
+
+@keyframes dash-flow {
+  to { stroke-dashoffset: -24; }
+}
+.animate-dash { animation: dash-flow 1s linear infinite; }
+
+@keyframes scan-line {
+  0% { top: 0%; opacity: 0; }
+  10% { opacity: 1; }
+  90% { opacity: 1; }
+  100% { top: 100%; opacity: 0; }
+}
+
+@keyframes blink-caret {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+.animate-caret { animation: blink-caret 1s step-end infinite; }
+
+@keyframes slide-up {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.animate-slide-up { animation: slide-up .5s cubic-bezier(0.2,0.8,0.3,1) both; }
+
+@keyframes live-dot {
+  0%, 100% { opacity: 1; box-shadow: 0 0 8px currentColor; }
+  50% { opacity: 0.4; box-shadow: none; }
+}
+.animate-live { animation: live-dot 1.6s ease-in-out infinite; }
+
+.token-seg-header { color: #fb7185; }
+.token-seg-payload { color: #c4b5fd; }
+.token-seg-signature { color: #5eead4; }
+
+.claim-key { color: #93c5fd; }
+.claim-string { color: #6ee7b7; }
+.claim-number { color: #fcd34d; }
+.claim-bool { color: #f0abfc; }
+.claim-null { color: #64748b; }
